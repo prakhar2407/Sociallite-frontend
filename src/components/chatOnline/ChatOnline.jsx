@@ -1,7 +1,6 @@
 import axios from "axios";
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState} from "react";
 import "./chatOnline.css";
-import { AuthContext } from "../../context/AuthContext";
 
 export default function ChatOnline({ onlineUsers, currentId, setCurrentChat }) {
   // const { user } = useContext(AuthContext);
