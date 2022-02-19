@@ -11,14 +11,15 @@ export default function Profile() {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const [user, setUser] = useState({});
   const username = useParams().username;
+  const API = process.env.REACT_APP_API_BASE_URL;
 
   useEffect(() => {
     const fetchUser = async () => {
-      const res = await axios.get(`/users?username=${username}`);
+      const res = await axios.get(`${API}/users?username=${username}`);
       setUser(res.data);
     };
     fetchUser();
-  }, [username]);
+  }, [API, username]);
 
   return (
     <>

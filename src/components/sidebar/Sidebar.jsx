@@ -15,6 +15,7 @@ import CloseFriend from "../closeFriend/CloseFriend";
 import { Link } from "react-router-dom";
 
 export default function Sidebar() {
+  // const API = process.env.REACT_APP_API_BASE_URL;
   return (
     <div className="sidebar">
       <div className="sidebarWrapper">

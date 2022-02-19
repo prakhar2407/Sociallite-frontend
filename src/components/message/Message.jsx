@@ -2,6 +2,7 @@ import "./message.css";
 import { format } from "timeago.js";
 
 export default function Message({ message, own }) {
+  // const API = process.env.REACT_APP_API_BASE_URL;
   return (
     <div className={own ? "message own" : "message"}>
       <div className="messageTop">

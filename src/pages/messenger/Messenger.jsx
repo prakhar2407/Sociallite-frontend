@@ -18,9 +18,10 @@ export default function Messenger() {
   const socket = useRef();
   const { user } = useContext(AuthContext);
   const scrollRef = useRef();
+  const API = process.env.REACT_APP_API_BASE_URL;
 
   useEffect(() => {
-    socket.current = io("ws://localhost:8900");
+    socket.current = io("https://sociallite-socket.herokuapp.com");
     socket.current.on("getMessage", (data) => {
       setArrivalMessage({
         sender: data.senderId,
@@ -48,26 +49,26 @@ export default function Messenger() {
   useEffect(() => {
     const getConversations = async () => {
       try {
-        const res = await axios.get("/conversations/" + user._id);
+        const res = await axios.get(API+"/conversations/" + user._id);
         setConversations(res.data);
       } catch (err) {
         console.log(err);
       }
     };
     getConversations();
-  }, [user._id]);
+  }, [API,user._id]);
 
   useEffect(() => {
     const getMessages = async () => {
       try {
-        const res = await axios.get("/messages/" + currentChat?._id);
+        const res = await axios.get(API+"/messages/" + currentChat?._id);
         setMessages(res.data);
       } catch (err) {
         console.log(err);
       }
     };
     getMessages();
-  }, [currentChat]);
+  }, [API, currentChat]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -88,7 +89,7 @@ export default function Messenger() {
     });
 
     try {
-      const res = await axios.post("/messages", message);
+      const res = await axios.post(API+"/messages", message);
       setMessages([...messages, res.data]);
       setNewMessage("");
     } catch (err) {

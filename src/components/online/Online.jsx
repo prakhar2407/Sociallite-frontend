@@ -2,6 +2,7 @@ import "./online.css";
 
 export default function Online({user}) {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  // const API = process.env.REACT_APP_API_BASE_URL;
 
   return (
     <li className="rightbarFriend">
